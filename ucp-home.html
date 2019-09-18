@@ -1,0 +1,87 @@
+<HTML>
+ <HEAD>
+  <TITLE>User Change Password </TITLE>
+ </HEAD>
+ <BODY>
+
+{% block content %}
+
+			{% for message in form.errors.messages %}
+            <span style="color: green;">[{{ message }}]</span>
+            {% endfor %}
+			
+            {% for error in form.errors.generalErrors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+			
+	    <form action="" method="post" novalidate>
+              {{ form.hidden_tag() }} 
+	      <table style="width:70%; height:20%; background-color:#C8C8C8" border="0"; cellpadding="0"; cellspacing="10">
+		<tr>
+		  <td>
+		    {{ form.username.label }}
+		  </td>
+		  <td>
+		    {{ form.username(size=32) }}
+		    {% for error in form.username.errors %}
+		    <span style="color: red;">[{{ error }}]</span>
+		    {% endfor %}
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+		    {{ form.password.label }}
+		  </td>
+	          <td>
+		    {{ form.password(size=32) }}
+		    {% for error in form.password.errors %}
+		    <span style="color: red;">[{{ error }}]</span>
+		    {% endfor %}
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+		    {{ form.newPassword.label }}
+		  </td>
+		  <td>
+		    {{ form.newPassword(size=32) }}
+		    {% for error in form.newPassword.errors %}
+		    <span style="color: red;">[{{ error }}]</span>
+		    {% endfor %}
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+		    {{ form.confirmNewPassword.label }}
+		  </td>
+		  <td>
+		    {{ form.confirmNewPassword(size=32) }}
+		    {% for error in form.confirmNewPassword.errors %}
+		    <span style="color: red;">[{{ error }}]</span>
+		    {% endfor %}
+		  </td>
+		</tr>
+		<tr height="50px">
+		  <td colspan=2 style="background-color:#C8C8C8; vertical-align:bottom;">
+		    &nbsp;&nbsp;{{ form.submit() }}
+		</td>
+		</tr>
+	      </table>
+	    </form>
+{% endblock %}
+
+
+ </BODY>
+</HTML>
+
+<script type="text/javascript">
+
+removeAutoCompleteInputFields();
+
+function removeAutoCompleteInputFields() {
+        var password = document.getElementById("password");
+        password.setAttribute("autocomplete", "off");
+}
+
+
+</script>
